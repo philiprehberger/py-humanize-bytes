@@ -1,5 +1,9 @@
 # philiprehberger-humanize-bytes
 
+[![Tests](https://github.com/philiprehberger/py-humanize-bytes/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/py-humanize-bytes/actions/workflows/publish.yml)
+[![PyPI version](https://img.shields.io/pypi/v/philiprehberger-humanize-bytes.svg)](https://pypi.org/project/philiprehberger-humanize-bytes/)
+[![License](https://img.shields.io/github/license/philiprehberger/py-humanize-bytes)](LICENSE)
+
 Convert byte counts to human-readable strings and back, with formatting options.
 
 ## Install
