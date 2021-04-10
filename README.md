@@ -59,6 +59,14 @@ parse_bytes("1024")       # 1024
 | `format_bytes(n, *, si=False, precision=1)` | Format byte count to human-readable string. Binary (KiB/MiB/GiB) by default, SI (KB/MB/GB) with `si=True`. |
 | `parse_bytes(s)` | Parse a human-readable byte string to an integer. Supports binary, SI, and shorthand units. Case-insensitive. |
 
+
+## Development
+
+```bash
+pip install -e .
+python -m pytest tests/ -v
+```
+
 ## License
 
 MIT
