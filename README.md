@@ -6,7 +6,7 @@
 
 Convert byte counts to human-readable strings and back, with formatting options.
 
-## Install
+## Installation
 
 ```bash
 pip install philiprehberger-humanize-bytes
