@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "philiprehberger-humanize-bytes"
-version = "0.1.5"
+version = "0.1.6"
 description = "Convert byte counts to human-readable strings and back, with formatting options"
 readme = "README.md"
 license = "MIT"
@@ -31,3 +31,9 @@ Changelog = "https://github.com/philiprehberger/py-humanize-bytes/blob/main/CHAN
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_humanize_bytes"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
