@@ -3,6 +3,7 @@
 [![Tests](https://github.com/philiprehberger/py-humanize-bytes/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/py-humanize-bytes/actions/workflows/publish.yml)
 [![PyPI version](https://img.shields.io/pypi/v/philiprehberger-humanize-bytes.svg)](https://pypi.org/project/philiprehberger-humanize-bytes/)
 [![License](https://img.shields.io/github/license/philiprehberger/py-humanize-bytes)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Convert byte counts to human-readable strings and back, with formatting options.
 
