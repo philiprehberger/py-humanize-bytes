@@ -24,9 +24,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/philiprehberger/py-humanize-bytes"
+Homepage = "https://github.com/philiprehberger/py-humanize-bytes#readme"
 Repository = "https://github.com/philiprehberger/py-humanize-bytes"
 Issues = "https://github.com/philiprehberger/py-humanize-bytes/issues"
+Changelog = "https://github.com/philiprehberger/py-humanize-bytes/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/philiprehberger_humanize_bytes"]
