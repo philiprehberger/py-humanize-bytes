@@ -5,10 +5,11 @@ from __future__ import annotations
 import math
 import re
 
-__all__ = ["format_bytes", "parse_bytes"]
+__all__ = ["compact", "format_bytes", "format_throughput", "parse_bytes"]
 
 _BINARY_UNITS = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB"]
 _SI_UNITS = ["B", "KB", "MB", "GB", "TB", "PB", "EB"]
+_COMPACT_UNITS = ["B", "K", "M", "G", "T", "P"]
 
 _PARSE_MAP: dict[str, int | float] = {
     # Binary units
@@ -110,3 +111,53 @@ def parse_bytes(s: str) -> int:
         raise ValueError(f"Unknown unit: {unit_str!r}")
 
     return int(number * _PARSE_MAP[unit_lower])
+
+
+def compact(n: int, *, binary: bool = False) -> str:
+    """Render *n* bytes as a short string like '5K', '10M', '1.2G'.
+
+    No space between number and unit. Decimal precision is minimal
+    (no trailing .0 — '5K' not '5.0K'). Variant of format_bytes for
+    tight UI contexts.
+
+    Args:
+        n: Number of bytes (must be non-negative).
+        binary: Use binary divisors (base 1024) instead of SI (base 1000).
+
+    Returns:
+        A compact formatted string such as ``"5K"`` or ``"1.2G"``.
+
+    Raises:
+        ValueError: If ``n`` is negative.
+    """
+    if n < 0:
+        raise ValueError(f"n must be non-negative, got {n}")
+
+    base = 1024 if binary else 1000
+
+    exponent = 0
+    if n >= 1:
+        exponent = min(int(math.log(n, base)), len(_COMPACT_UNITS) - 1)
+
+    divisor = base**exponent
+    value = n / divisor
+    unit = _COMPACT_UNITS[exponent]
+
+    if value == int(value):
+        return f"{int(value)}{unit}"
+    return f"{value:.1f}{unit}"
+
+
+def format_throughput(bytes_per_sec: float, *, binary: bool = False) -> str:
+    """Render a transfer rate like '5 MB/s'.
+
+    Uses :func:`format_bytes` internally and appends ``'/s'``.
+
+    Args:
+        bytes_per_sec: Transfer rate in bytes per second.
+        binary: Use binary units (KiB/MiB/GiB) instead of SI (KB/MB/GB).
+
+    Returns:
+        A formatted transfer rate string such as ``"5 MB/s"``.
+    """
+    return f"{format_bytes(int(bytes_per_sec), si=not binary)}/s"

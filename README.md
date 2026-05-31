@@ -15,7 +15,12 @@ pip install philiprehberger-humanize-bytes
 ## Usage
 
 ```python
-from philiprehberger_humanize_bytes import format_bytes, parse_bytes
+from philiprehberger_humanize_bytes import (
+    compact,
+    format_bytes,
+    format_throughput,
+    parse_bytes,
+)
 ```
 
 ### Formatting bytes
@@ -52,12 +57,33 @@ parse_bytes("10M")        # 10000000
 parse_bytes("1024")       # 1024
 ```
 
+### Compact formatting
+
+```python
+compact(500)                 # "500B"
+compact(1500)                # "1.5K"
+compact(10_000_000)          # "10M"
+compact(1024, binary=True)   # "1K"
+compact(1500, binary=True)   # "1.5K"
+```
+
+### Throughput
+
+```python
+format_throughput(1_000_000)              # "1 MB/s"
+format_throughput(2_500_000)              # "2.5 MB/s"
+format_throughput(1_048_576, binary=True) # "1 MiB/s"
+format_throughput(0)                      # "0 B/s"
+```
+
 ## API
 
 | Function | Description |
 |----------|-------------|
 | `format_bytes(n, *, si=False, precision=1)` | Format byte count to human-readable string. Binary (KiB/MiB/GiB) by default, SI (KB/MB/GB) with `si=True`. |
 | `parse_bytes(s)` | Parse a human-readable byte string to an integer. Supports binary, SI, and shorthand units. Case-insensitive. |
+| `compact(n, *, binary=False)` | Render *n* bytes as a short string like `"5K"`, `"10M"`, `"1.2G"` (no space, minimal decimals). SI by default; pass `binary=True` for base 1024. Raises `ValueError` on negative input. |
+| `format_throughput(bytes_per_sec, *, binary=False)` | Render a transfer rate string like `"5 MB/s"`. SI by default; pass `binary=True` for KiB/MiB/GiB units. |
 
 ## Development
 

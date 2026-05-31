@@ -1,11 +1,19 @@
 # Changelog
 
+## 0.2.0 (2026-05-30)
+
+- Add `compact()` for short-form size strings like `5K`, `10M`
+- Add `format_throughput()` for transfer rates like `5 MB/s`
+
 ## 0.1.7 (2026-03-31)
 
 - Standardize README to 3-badge format with emoji Support section
 - Update CI checkout action to v5 for Node.js 24 compatibility
 - Add GitHub issue templates, dependabot config, and PR template
-## 0.1.6- Add pytest and mypy tool configuration to pyproject.toml
+
+## 0.1.6
+
+- Add pytest and mypy tool configuration to pyproject.toml
 
 ## 0.1.5
 
